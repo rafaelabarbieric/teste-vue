@@ -1,47 +1,42 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script setup> 
+
+import {ref }from 'vue'
+
+let contador = ref(0)
+
+function contadorMais(){
+    contador.value++
+}
+function contadorMenos(){
+    if (contador.value > 0) {
+      contador.value--
+    }
+}
+function limpar(){
+  contador.value = 0
+}
+
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <button @click="contadorMais()">+</button>
+  <button @click="contadorMenos()">-</button>
+   <p> Valor do contador: {{ contador }}</p>
+  <button @click="limpar()">Limpar</button>
 
-  <main>
-    <TheWelcome />
-  </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<style scoped> 
+
+button{
+  background-color: rgb(104, 172, 250);
+  color: white;
+  font-weight: bold;
+  border: 0;
+  margin: 2px;
+  padding: 20px;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
